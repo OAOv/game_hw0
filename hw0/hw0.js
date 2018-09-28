@@ -31,7 +31,7 @@ function init() {
   var cube = new THREE.Mesh(cubeGeometry, cubeMaterial)
   cube.position.setY(2.5)
   
-  var cylinderGeometry = new THREE.CylinderGeometry(2.5, 2.5, 6, 20)
+  var cylinderGeometry = new THREE.CylinderGeometry(2.5, 2.5, 5, 20)
   var cylinderMaterial = new THREE.MeshNormalMaterial()
   var cylinder = new THREE.Mesh(cylinderGeometry, cylinderMaterial)
   cylinder.position.setY(7.5)
