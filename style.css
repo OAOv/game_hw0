@@ -11,11 +11,21 @@ table {
 	width: 100%;
 }
 
+tr {
+	width: 10%;
+	height: 20%;
+}
+
 td {
-	width: 25%;
-	text-align: center;
+	border-style: solid;
+	border-width: 1px;
 }
 
 p {
+	text-align: center;
+}
+
+.link {
+	width: 10%;
 	text-align: center;
 }
