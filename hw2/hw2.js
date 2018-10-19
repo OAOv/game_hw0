@@ -103,8 +103,8 @@ function init() {
 
   console.log(disk);
 
-  var floorGeometry = new THREE.PlaneGeometry(400, 400, 4, 4);
-  var floor = new Floor(floorGeometry, 0x444444);
+  var floorGeometry = new THREE.PlaneGeometry(400, 400, 50, 50);
+  var floor = new Floor(floorGeometry, 0x777777);
  
   var wallGeometry = new THREE.BoxGeometry(400, 30, 10);
   var wallMeometry = new THREE.MeshPhongMaterial({
