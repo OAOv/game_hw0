@@ -65,8 +65,8 @@ var pose8 = {xla: 0, yla: 0, zla: 0.45,
              xra: 0, yra: 0, zra: -0.45,
              xll: 0, yll: 0, zll: 0,
              xrl: 0, yrl: 0, zrl: 0,
-             xh: -0.01, yh: 0, zh: 0.02,
-             xb: 0, yb: 0, zb: 0,
+             xh: -0.1, yh: 0, zh: 0.02,
+             xb: 0.25, yb: 0, zb: 0,
              h: 20};
              
 var keys = [
