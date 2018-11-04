@@ -130,6 +130,9 @@ animate();
 ////////////////////////////////////////////////////////////////
 
 function init() {
+  ///
+  document.getElementById ('playAudio').play();
+
   renderer = new THREE.WebGLRenderer({
     antialias: true,
     alpha: true
