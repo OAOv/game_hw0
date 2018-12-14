@@ -93,8 +93,8 @@ function init() {
 
   //  GROUND
 
-  //var gt = new THREE.TextureLoader().load( "grasslight-big.jpg" );
-  var gt = new THREE.TextureLoader().load("https://i.imgur.com/p8CRm9W.jpg");
+  var gt = new THREE.TextureLoader().load( "grasslight-big.jpg" );
+  //var gt = new THREE.TextureLoader().load("https://i.imgur.com/p8CRm9W.jpg");
   var gg = new THREE.PlaneBufferGeometry( 16000, 16000 );
   var gm = new THREE.MeshPhongMaterial( { color: 0xffffff, map: gt } );
 
@@ -146,12 +146,12 @@ function init() {
     lowPlatform.push(platform);
   }
   
-  for(var i = 0; i < 20; i++) {
+  /*for(var i = 0; i < 20; i++) {
     let platform = new THREE.Mesh (new THREE.CylinderGeometry(25, 25, 100, 32), new THREE.MeshBasicMaterial ({color: 0x000000}))
     scene.add (platform);
     platform.position.set(Math.random() * 1000 - 500, 50, Math.random() * 1000 - 500);
     highPlatform.push(platform);
-  }
+  }*/
 
   for(var i = 0; i < 5; i++) {
     var treasure = new THREE.Mesh(new THREE.DodecahedronGeometry(15, 1), new THREE.MeshNormalMaterial());
@@ -227,6 +227,7 @@ function onKeyDown ( event ) {
   event.stopPropagation();
   let controlsY = yohkoWrap.md2.controls;
 
+
   switch( event.keyCode ) {
 
     case 38: /*up*/
@@ -288,15 +289,18 @@ function onKeyUp ( event ) {
 
 function height(x, z) {
   for(var i = 0; i < 20; i++) {
-    if(Math.abs(highPlatform[i].position.x - x) <= 25 || Math.abs(highPlatform[i].position.z - z) <= 25 )
-      return 100;
-  }
-  for(var i = 0; i < 20; i++) {
-    if(Math.abs(highPlatform[i].position.x - x) <= 25 || Math.abs(highPlatform[i].position.z - z) <= 25 )
+    if(Math.sqrt((lowPlatform[i].position.x - x) * (lowPlatform[i].position.x - x)
+               + (lowPlatform[i].position.z - z) * (lowPlatform[i].position.z - z)) <= 40 )
       return 40;
   }
+  /*for(var i = 0; i < 20; i++) {
+    if(Math.sqrt((highPlatform[i].position.x - x) * (highPlatform[i].position.x - x)
+               + (highPlatform[i].position.z - z) * (highPlatform[i].position.z - z)) <= 40 )
+      return 100;
+  }*/
   return 0;
 }
+
 
 //
 
@@ -305,6 +309,7 @@ function getTreasure(x, z) {
     if((Math.abs(treasureList[i].position.x - x) <= 10 || Math.abs(treasureList[i].position.z - z) <= 10)
         && flag[i] == false) {
       flag[i] = true;
+      treasureList[i].material = new THREE.MeshBasicMaterial( { color: 0xffffff, opacity: 1, wireframe: true } );
       return i;
     }
   return -1;
@@ -319,6 +324,7 @@ function animate() {
 function updateMovementModel() {
   var y = height( yohkoWrap.md2.root.position.x, yohkoWrap.md2.root.position.z);
   console.log(y);
+
   if(y < 70) {
     if(y == 40)
       yohkoWrap.md2.root.position.y = 113.42663764953613;
@@ -334,7 +340,7 @@ function render() {
   var delta = clock.getDelta();
   if (yohkoWrap.md2) {
     yohkoWrap.md2.update (delta)
-    updateMovementModel();
+    updateMovementModel()
   }
   renderer.render( scene, camera );
 
