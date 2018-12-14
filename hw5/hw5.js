@@ -1,5 +1,5 @@
 class MD2Wrapper {
-  constructor (config, controls, pos, scale = 2) {
+  constructor (config, controls, pos, scale = 1) {
 
     this.md2 = new THREE.MD2CharacterComplex();
     this.md2.scale = scale
@@ -135,6 +135,26 @@ function init() {
   cameraControls.target.set( 0, 50, 0 );
   cameraControls.update();
 
+
+  //
+  for(var i = 0; i < 20; i++) {
+    let platform = new THREE.Mesh (new THREE.BoxGeometry(50,20,50), new THREE.MeshBasicMaterial ({transparent:true, opacity:0.62}))
+    scene.add (platform);
+    platform.position.set(Math.random() * 1000 - 500, 10, Math.random() * 1000 - 500);
+  }
+  for(var i = 0; i < 20; i++) {
+    let platform = new THREE.Mesh (new THREE.BoxGeometry(50,50,50), new THREE.MeshBasicMaterial ({transparent:true, opacity:0.62}))
+    scene.add (platform);
+    platform.position.set(Math.random() * 1000 - 500, 25, Math.random() * 1000 - 500);
+  }
+
+  var treasure1 = new THREE.Mesh(new THREE.DodecahedronGeometry(15, 1), new THREE.MeshNormalMaterial());
+  scene.add(treasure1);
+  treasure1.position.set(Math.random() * 1000 - 500, 60, Math.random() * 1000 - 500);
+  var treasure2 = new THREE.Mesh(new THREE.DodecahedronGeometry(15, 1), new THREE.MeshNormalMaterial());
+  scene.add(treasure2);
+  treasure2.position.set(Math.random() * 1000 - 500, 60, Math.random() * 1000 - 500);
+
   /////////////////////////////////////////////////////////////////////////////
   // CHARACTER: yohko
 
@@ -253,6 +273,10 @@ function onKeyUp ( event ) {
     case 17: /*ctrl*/  controlsY.attack = false; break;
 
   }
+
+}
+
+function height(x, z) {
 
 }
 
