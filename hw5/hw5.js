@@ -314,7 +314,6 @@ function animate() {
 
   requestAnimationFrame( animate );
   render();
-  update();
 }
 
 function update() {
@@ -334,6 +333,7 @@ function render() {
   var delta = clock.getDelta();
   if (yohkoWrap.md2) {
     yohkoWrap.md2.update (delta)
+    update();
   }
   renderer.render( scene, camera );
 
