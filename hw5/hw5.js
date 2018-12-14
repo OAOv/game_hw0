@@ -313,13 +313,13 @@ function getTreasure(x, z) {
 function animate() {
 
   requestAnimationFrame( animate );
+  render();
   update();
 }
 
 function update() {
   var y = height( yohkoWrap.md2.root.position.x, yohkoWrap.md2.root.position.z);
   if(y < 70) {
-    render();
     if(y == 40)
       yohkoWrap.md2.root.position.y = 113.42663764953613;
     else
