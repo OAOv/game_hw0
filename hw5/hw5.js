@@ -320,7 +320,7 @@ function update() {
   var y = height( yohkoWrap.md2.root.position.x, yohkoWrap.md2.root.position.z);
   if(y < 70) {
     render();
-    yohkoWrap.md2.root.position.y = y;
+    yohkoWrap.md2.root.position.y = yohkoWrap.md2.root.position.y + y;
   }
 }
 
