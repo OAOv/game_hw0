@@ -93,7 +93,7 @@ function init() {
 
   //  GROUND
 
-  var gt = new THREE.TextureLoader().load( "grasslight-big.jpg" );
+  var gt = new THREE.TextureLoader().load( "grasslight.jpg" );
   //var gt = new THREE.TextureLoader().load("https://i.imgur.com/p8CRm9W.jpg");
   var gg = new THREE.PlaneBufferGeometry( 16000, 16000 );
   var gm = new THREE.MeshPhongMaterial( { color: 0xffffff, map: gt } );
