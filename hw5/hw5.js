@@ -149,7 +149,7 @@ function init() {
     animations: {
       move: "run",
       idle: "stand",
-      jump: "jump"
+      jump: "jump",
       attack: "attack",
       crouchMove: "cwalk",
       crouchIdle: "cstand",
