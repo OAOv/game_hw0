@@ -1,5 +1,5 @@
 class MD2Wrapper {
-  constructor (config, controls, pos, scale = 1) {
+  constructor (config, controls, pos, scale = 2) {
 
     this.md2 = new THREE.MD2CharacterComplex();
     this.md2.scale = scale
@@ -147,13 +147,13 @@ function init() {
     weapons:  [  ],
 
     animations: {
-      move: "run0",
-      idle: "stand0",
-      jump: "jump0"
-      /*attack: "attack",
+      move: "run",
+      idle: "stand",
+      jump: "jump"
+      attack: "attack",
       crouchMove: "cwalk",
       crouchIdle: "cstand",
-      crouchAttach: "crattack"*/
+      crouchAttach: "crattack"
     },
 
     walkSpeed: 350, //translation speed
