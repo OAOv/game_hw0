@@ -316,8 +316,9 @@ function animate() {
   render();
 }
 
-function update() {
+function updateMovementModel() {
   var y = height( yohkoWrap.md2.root.position.x, yohkoWrap.md2.root.position.z);
+  console.log(y);
   if(y < 70) {
     if(y == 40)
       yohkoWrap.md2.root.position.y = 113.42663764953613;
@@ -333,7 +334,7 @@ function render() {
   var delta = clock.getDelta();
   if (yohkoWrap.md2) {
     yohkoWrap.md2.update (delta)
-    update();
+    updateMovementModel();
   }
   renderer.render( scene, camera );
 
