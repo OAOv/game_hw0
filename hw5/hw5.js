@@ -38,6 +38,8 @@ var camera, scene, renderer;
 
 var yohkoWrap;
 var light;
+var treasureList = [], flag = [];
+var lowPlatform = [], highPlatform = [];
 
 var box3, box3Helper;
 
@@ -138,20 +140,25 @@ function init() {
 
   //
   for(var i = 0; i < 20; i++) {
-    let platform = new THREE.Mesh (new THREE.BoxGeometry(50,40,50), new THREE.MeshBasicMaterial ({transparent:true, opacity:0.62, color: 0xffffff}))
+    let platform = new THREE.Mesh (new THREE.CylinderGeometry(25, 25, 40, 32), new THREE.MeshBasicMaterial ({transparent:true, opacity:0.62, color: 0xffffff}))
     scene.add (platform);
     platform.position.set(Math.random() * 1000 - 500, 20, Math.random() * 1000 - 500);
+    lowPlatform.push(platform);
   }
+  
   for(var i = 0; i < 20; i++) {
-    let platform = new THREE.Mesh (new THREE.BoxGeometry(50,100,50), new THREE.MeshBasicMaterial ({color: 0x000000}))
+    let platform = new THREE.Mesh (new THREE.CylinderGeometry(25, 25, 100, 32), new THREE.MeshBasicMaterial ({color: 0x000000}))
     scene.add (platform);
     platform.position.set(Math.random() * 1000 - 500, 50, Math.random() * 1000 - 500);
+    highPlatform.push(platform);
   }
 
   for(var i = 0; i < 5; i++) {
     var treasure = new THREE.Mesh(new THREE.DodecahedronGeometry(15, 1), new THREE.MeshNormalMaterial());
     scene.add(treasure);
     treasure.position.set(Math.random() * 1000 - 500, 175, Math.random() * 1000 - 500);
+    treasureList.push(treasure);
+    flag[i] = false;
   }
 
   /////////////////////////////////////////////////////////////////////////////
@@ -276,16 +283,45 @@ function onKeyUp ( event ) {
 }
 
 function height(x, z) {
-
+  for(var i = 0; i < 20; i++) {
+    if(Math.abs(highPlatform[i].position.x - x) <= 25 || Math.abs(highPlatform[i].position.z - z) <= 25 )
+      return 100;
+  }
+  for(var i = 0; i < 20; i++) {
+    if(Math.abs(highPlatform[i].position.x - x) <= 25 || Math.abs(highPlatform[i].position.z - z) <= 25 )
+      return 40;
+  }
+  return 0;
 }
 
 //
 
+function getTreasure(x, z) {
+  for(var i = 0; i < 5; i++)
+    if((Math.abs(highPlatform[i].position.x - x) <= 10 || Math.abs(highPlatform[i].position.z - z) <= 10)
+        && flag[i] == false && controlsY.jump == true) {
+      flag[i] = true;
+      scene.remove(i)
+      return i;
+    }
+  return -1;
+}
+
 function animate() {
 
   requestAnimationFrame( animate );
-  render();
+  update();
+}
 
+function update() {
+  var y = height( yohkoWrap.md2.root.position.x, yohkoWrap.md2.root.position.z);
+  if(y < 70) {
+    render();
+    yohkoWrap.md2.root.position.y = y;
+  }
+  if(getTreasure(yohkoWrap.md2.root.position.x, yohkoWrap.md2.root.position.z) >= 0) {
+    alert("get treasure");
+  }
 }
 
 function render() {
