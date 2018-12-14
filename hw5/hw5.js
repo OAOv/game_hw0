@@ -302,10 +302,9 @@ function height(x, z) {
 
 function getTreasure(x, z) {
   for(var i = 0; i < 5; i++)
-    if((Math.abs(highPlatform[i].position.x - x) <= 10 || Math.abs(highPlatform[i].position.z - z) <= 10)
+    if((Math.abs(treasureList[i].position.x - x) <= 10 || Math.abs(treasureList[i].position.z - z) <= 10)
         && flag[i] == false) {
       flag[i] = true;
-      scene.remove(i)
       return i;
     }
   return -1;
