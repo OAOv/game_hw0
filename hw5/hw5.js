@@ -241,7 +241,11 @@ function onKeyDown ( event ) {
     case 39: /*right*/
     case 68: /*D*/    controlsY.moveRight = true; break;
 
-    case 32: /*space*/ controlsY.jump = true; break;
+    case 32: /*space*/ controlsY.jump = true; 
+                       if(getTreasure(yohkoWrap.md2.root.position.x, yohkoWrap.md2.root.position.z) >= 0) {
+                         alert("get treasure");
+                       }
+                       break;
     // jump: should save the animation before jump
     // return to that animation, when SPACE is up
     
@@ -299,7 +303,7 @@ function height(x, z) {
 function getTreasure(x, z) {
   for(var i = 0; i < 5; i++)
     if((Math.abs(highPlatform[i].position.x - x) <= 10 || Math.abs(highPlatform[i].position.z - z) <= 10)
-        && flag[i] == false && controlsY.jump == true) {
+        && flag[i] == false) {
       flag[i] = true;
       scene.remove(i)
       return i;
@@ -318,9 +322,6 @@ function update() {
   if(y < 70) {
     render();
     yohkoWrap.md2.root.position.y = y;
-  }
-  if(getTreasure(yohkoWrap.md2.root.position.x, yohkoWrap.md2.root.position.z) >= 0) {
-    alert("get treasure");
   }
 }
 
