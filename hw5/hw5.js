@@ -46,6 +46,9 @@ var box3, box3Helper;
 var cameraControls;
 var clock = new THREE.Clock();
 
+
+var sound = document.getElementById ('open');
+
 init();
 animate();
 
@@ -310,6 +313,7 @@ function getTreasure(x, z) {
         && flag[i] == false) {
       flag[i] = true;
       treasureList[i].material = new THREE.MeshBasicMaterial( { color: 0xffffff, opacity: 1, wireframe: true } );
+      sound.play();
       return i;
     }
   return -1;
