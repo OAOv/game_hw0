@@ -138,22 +138,21 @@ function init() {
 
   //
   for(var i = 0; i < 20; i++) {
-    let platform = new THREE.Mesh (new THREE.BoxGeometry(50,20,50), new THREE.MeshBasicMaterial ({transparent:true, opacity:0.62}))
+    let platform = new THREE.Mesh (new THREE.BoxGeometry(50,40,50), new THREE.MeshBasicMaterial ({transparent:true, opacity:0.62, color: 0xffffff}))
     scene.add (platform);
-    platform.position.set(Math.random() * 1000 - 500, 10, Math.random() * 1000 - 500);
+    platform.position.set(Math.random() * 1000 - 500, 20, Math.random() * 1000 - 500);
   }
   for(var i = 0; i < 20; i++) {
-    let platform = new THREE.Mesh (new THREE.BoxGeometry(50,50,50), new THREE.MeshBasicMaterial ({transparent:true, opacity:0.62}))
+    let platform = new THREE.Mesh (new THREE.BoxGeometry(50,100,50), new THREE.MeshBasicMaterial ({color: 0x000000}))
     scene.add (platform);
-    platform.position.set(Math.random() * 1000 - 500, 25, Math.random() * 1000 - 500);
+    platform.position.set(Math.random() * 1000 - 500, 50, Math.random() * 1000 - 500);
   }
 
-  var treasure1 = new THREE.Mesh(new THREE.DodecahedronGeometry(15, 1), new THREE.MeshNormalMaterial());
-  scene.add(treasure1);
-  treasure1.position.set(Math.random() * 1000 - 500, 60, Math.random() * 1000 - 500);
-  var treasure2 = new THREE.Mesh(new THREE.DodecahedronGeometry(15, 1), new THREE.MeshNormalMaterial());
-  scene.add(treasure2);
-  treasure2.position.set(Math.random() * 1000 - 500, 60, Math.random() * 1000 - 500);
+  for(var i = 0; i < 5; i++) {
+    var treasure = new THREE.Mesh(new THREE.DodecahedronGeometry(15, 1), new THREE.MeshNormalMaterial());
+    scene.add(treasure);
+    treasure.position.set(Math.random() * 1000 - 500, 175, Math.random() * 1000 - 500);
+  }
 
   /////////////////////////////////////////////////////////////////////////////
   // CHARACTER: yohko
