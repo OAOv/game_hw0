@@ -1,0 +1,15 @@
+#info {
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  padding: 10px;
+  text-align: center;
+  color: #e8e8e8
+}
+
+body {
+  background: radial-gradient(center, ellipse cover, #cecece 7%, #000000 75%); 
+  background: -moz-radial-gradient(center, ellipse cover, #cecece 7%, #000000 75%); 
+  background: -webkit-radial-gradient(center, ellipse cover, #cecece 7%, #000000 75%); 
+  background: -o-radial-gradient(center, ellipse cover, #cecece 7%, #000000 75%); 
+}
