@@ -244,7 +244,7 @@ function onKeyDown ( event ) {
 
     case 32: /*space*/ controlsY.jump = true; 
                        if(getTreasure(yohkoWrap.md2.root.position.x, yohkoWrap.md2.root.position.z) >= 0) {
-                         alert("get treasure");
+                         //alert("get treasure");
                        }
                        break;
     // jump: should save the animation before jump
